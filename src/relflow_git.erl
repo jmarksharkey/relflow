@@ -33,13 +33,13 @@ add_app_paths(Changes) ->
       fun(AppName, AppMap) ->
               case maps:get(single_src_app, AppMap) of
                   true ->
-                      AppSrc = fmt("src/~s.app.src", [AppName]),
-                      Appup  = fmt("ebin/~s.appup",  [AppName]),
+                      AppSrc = fmt("./src/~s.app.src", [AppName]),
+                      Appup  = fmt("./ebin/~s.appup",  [AppName]),
                       M1 = maps:put(appup_path,  Appup,  AppMap),
                       maps:put(appsrc_path, AppSrc, M1);
                   false ->
-                      AppSrc = fmt("apps/~s/src/~s.app.src", [AppName, AppName]),
-                      Appup  = fmt("apps/~s/ebin/~s.appup",  [AppName, AppName]),
+                      AppSrc = fmt("./apps/~s/src/~s.app.src", [AppName, AppName]),
+                      Appup  = fmt("./apps/~s/ebin/~s.appup",  [AppName, AppName]),
                       M1 = maps:put(appup_path,  Appup,  AppMap),
                       maps:put(appsrc_path, AppSrc, M1)
               end
